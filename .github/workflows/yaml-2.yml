@@ -13,4 +13,6 @@ jobs:
           run: ls -ltra
           
         - name: Execute Cosway Shell Scrip
-          run: ./ascii-script.sh
+          run: |
+            chmod +x
+            ./ascii-script.sh
