@@ -3,7 +3,7 @@ name: Generate ASCII ArtWork
 on: push
 
 jobs:
-    first_job:
+    Build_job_1:
         runs-on: ubuntu-latest
         steps:
         - name: Checkout Repo
@@ -16,3 +16,25 @@ jobs:
           run: |
             chmod +x ascii-script.sh
             ./ascii-script.sh
+          
+        - name: Sleep for 30 Seconds
+          run: sleep 30
+            
+    test_job_2:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Sleep for 10 Seconds
+          uses: sleep 10
+          
+        - name: Test if any Files Exists
+          run: grep -i "dragon" dragon.txt
+            
+    deploy_job_3:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Read Files
+          uses: cat dragon.txt
+          
+        - name: Deploy
+          run: echo Deploying .... ... .. . !! :))
+
