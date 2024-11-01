@@ -6,13 +6,11 @@ jobs:
     Build_job_1:
         runs-on: ubuntu-latest
         steps:
-        - name: List Repo Files
-          run: ls -ltra
+        - name: Install cowsay
+          run: sudo apt-get install cowsay -y
           
         - name: Execute Cosway Shell Scrip
-          run: |
-            chmod +x ascii-script.sh
-            ./ascii-script.sh
+          run: cowsay -f dragon "Run for cover, I am a dragon....RAAW" >> dragon.txt
           
         - name: Sleep for 30 Seconds
           run: sleep 30
