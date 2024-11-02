@@ -1,0 +1,28 @@
+name: Matrix workflows Configurations
+
+on: 
+  push:
+  workflow_dispatch:
+env:
+    CONTAINER_REGISTRY: docker.io
+    DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+    IMAGE_NAME: gh-ac-nginx
+    DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN}}
+jobs:
+    deploy-on-ubuntu-latest-machine:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Echo Docker Build
+          run: docker info
+          
+        - name: Run Images
+          run: docker run hello-world
+            
+    deploy-on-windows-machine:
+        runs-on: windows-latest
+        steps:
+        - name: Echo Docker Details
+          run: docker info
+          
+        - name: Run Images
+          run: docker run hello-world
