@@ -10,7 +10,6 @@ on:
   workflow_dispatch:
   #schedule:
   #  - cron: "*/59 * * * *"
-  pull:
   pull-request:
     types:
       - opened
