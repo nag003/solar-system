@@ -7,7 +7,7 @@ on:
     branches:
       - main
       - '!feature/*'
-  workflow-dispatch:
+  workflow_dispatch:
   #schedule:
   #  - cron: "*/59 * * * *"
   pull:
