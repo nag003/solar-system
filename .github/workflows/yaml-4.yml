@@ -30,7 +30,7 @@ jobs:
         #    password: ${{ secrets.DOCKERHUB_TOKEN}}
             
     Deploy:
-        if: github.ref = 'ref/heads/main'
+        if: github.ref == 'ref/heads/main'
         needs: Docker
         runs-on: ubuntu-latest
         concurrency:
