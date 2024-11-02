@@ -32,9 +32,10 @@ jobs:
         runs-on: ubuntu-latest
         concurrency:
           group: production-deployment
-          cancel-in-progress: true
+          cancel-in-progress: false
         steps:
         - name: Docker Run
+          timeout-minutes: 1
           run: |
             echo docker run -d -p 8080:80 $CONTAINER_REGISTRY/$DOCKERHUB_USERNAME/$IMAGE_NAME:latest
-            sleep 40s
+            sleep 69s
