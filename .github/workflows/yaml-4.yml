@@ -1,7 +1,8 @@
 name: Exploring Variables and Secrets
 
-on: push
-
+on: 
+   schedule:
+     - cron: "*/2 * * * *"   # <=== Change this value
 env:
     CONTAINER_REGISTRY: docker.io
     DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
