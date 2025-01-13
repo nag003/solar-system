@@ -34,10 +34,12 @@ jobs:
       - name: Install Dependencies
         run: npm install
         
-      - name: Unit testing
+      - name: Unit Testing
+        id: nodejs-unit-testing-step
         run: npm test
         
       - name: Archive Test Result
+        if: steps.nodejs-unit-testing-step.outcone == 'failure' || steps.nodejs-unit-testing-step.outcone == 'success'
         uses: actions/upload-artifact@v4
         with:
           name: Mocha-Test-Result
