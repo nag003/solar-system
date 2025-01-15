@@ -17,7 +17,8 @@ jobs:
     name: Unit Testing
     services:
       mongo-db:
-        image: siddarth67/mongo-db:non-prod
+        #run: docker pull siddarth67/mongo-db:non-prod
+        image: siddharth67/mongo-db:non-prod
         ports:
           - 27017:27017
     env:
