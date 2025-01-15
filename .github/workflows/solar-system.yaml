@@ -15,6 +15,16 @@ env:
 jobs:
   unit-Testing:
     name: Unit Testing
+    service:
+      mongo-db:
+        image: siddarth67/mongo-db:non-prod
+        ports:
+          - 27017:27017
+    env:
+      MONGO_URI: 'mongodb//localhost:27017/superData'
+      MONGO_USERNAME: non-prod-user
+      MONGO_PASSWORD: non-prod-password
+    
     strategy:
       matrix:
         nodejs_version: [18]
@@ -148,3 +158,4 @@ jobs:
         tags: |
            ${{ secrets.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}
            ghcr.io/${{ github.repository_owner }}/solar-system:${{ github.sha }}
+   
