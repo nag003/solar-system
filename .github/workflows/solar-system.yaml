@@ -86,6 +86,8 @@ jobs:
   docker:
     name: Containerization
     needs: [code-coverage, unit-Testing]
+    permissions:
+      packages: write # none / read / write
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
