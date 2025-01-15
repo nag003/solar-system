@@ -5,29 +5,28 @@ on:
     types: [published]
 
 jobs:
-    test-npm-publish-package:
-      runs-on: ubuntu-latest
-      permissions:
-        packages: write
-        contents: read
-      steps:
-        - name: Checkout Repository
-          uses: actions/checkout@v4
-          
-        - name: Setup NodeJs Version
-          uses: actions/setup-node@v4
-          with:
-            node-version: "20.x"
-            registry-url: "https://npm.pkg.github.com"
+  test-npm-publish-package:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-        - name: Authenticate with GitHub Package Registry
-          run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
-            
-        - name: Install Dependencies
-          run: npm install
-          
-        - name: Publish to Github Registry
-          run: npm publish
-          env:
-            NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+      - name: Setup Node.js Version
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          registry-url: "https://npm.pkg.github.com"
+
+      - name: Authenticate with GitHub Package Registry
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Publish to GitHub Registry
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
