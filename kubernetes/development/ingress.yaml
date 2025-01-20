@@ -5,20 +5,20 @@ metadata:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"
   name: solar-system
-  namespace: _{_NAMESPACE_}_
+  namespace: _{_NAMESPACE_}_  # Replace with your namespace
 spec:
-    rules:
-    - host: solar-system-_{_NAMESPACE_}_._{_INGRESS_IP_}_.nip.io
+  rules:
+    - host: solar-system-_{_NAMESPACE_}_._{_LOAD_BALANCER_URL_}_
       http:
         paths:
-        - backend:
-            service:
-              name: solar-system
-              port:
-                number: 3000
-          path: /
-          pathType: Prefix
-    tls:
+          - backend:
+              service:
+                name: solar-system
+                port:
+                  number: 3000
+            path: /
+            pathType: Prefix
+  tls:
     - hosts:
-      - solar-system-_{_NAMESPACE_}_._{_INGRESS_IP_}_.nip.io
+        - solar-system-_{_NAMESPACE_}_._{_LOAD_BALANCER_URL_}_
       secretName: ingress-local-tls
