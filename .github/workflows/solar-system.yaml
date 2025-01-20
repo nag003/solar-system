@@ -207,7 +207,7 @@ jobs:
            
       - name: Parse Nginx Ingress Controller IP
         run: |
-          echo "INGRESS_IP=$(kubectl -n ingress-nginx get services ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].ip}")" >> $GITHUB_ENV
+          echo "INGRESS_HOST=$(kubectl -n ingress-nginx get service ingress-nginx-controller -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')" >> $GITHUB_ENV
           kubectl get nodes
            
       - name: Replace Token in Manifest Files
