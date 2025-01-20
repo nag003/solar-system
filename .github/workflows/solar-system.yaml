@@ -243,7 +243,7 @@ jobs:
 
   integration-testing:
     name: Dev integration testing
-    needs: deploy
+    needs: dev-eks-deploy
     runs-on: ubuntu-latest
     steps:
       - name: Test URL Output Using CURL & jq
